@@ -10,7 +10,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://skandaganesh.github.io',
+  site: 'https://skandaganesh.github.io/',
   base: '/',
   vite: {
     plugins: [tailwindcss()],
