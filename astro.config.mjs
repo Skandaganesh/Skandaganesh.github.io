@@ -9,7 +9,8 @@ import markdoc from "@astrojs/markdoc";
 export default defineConfig({
   site: "https://skandaganesh.github.io/",  
   base: "/",                                 // correct for user site
-  output: "static",                          // required for GitHub Pages
+  output: "static",         
+   prerender: { default: true },                  // required for GitHub Pages
   vite: { plugins: [tailwindcss()] },
   integrations: [
     mdx({ syntaxHighlight: "prism" }),
