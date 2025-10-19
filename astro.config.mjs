@@ -1,27 +1,18 @@
-// @ts-check
-import tailwindcss from "@tailwindcss/vite";
+// astro.config.mjs
 import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
 
-import vercel from "@astrojs/vercel";
-
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://skandaganesh.github.io/',
-  base: '/',
-  vite: {
-    plugins: [tailwindcss()],
-  },
-
+  site: "https://skandaganesh.github.io/",  
+  base: "/",                                 // correct for user site
+  output: "static",                          // required for GitHub Pages
+  vite: { plugins: [tailwindcss()] },
   integrations: [
-    mdx({
-      syntaxHighlight: "prism",
-      remarkPlugins: [],
-      rehypePlugins: [],
-    }),
+    mdx({ syntaxHighlight: "prism" }),
     markdoc(),
     react(),
     icon({
@@ -31,16 +22,7 @@ export default defineConfig({
       },
     }),
   ],
-  output: "static",
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-  }),
   markdown: {
-    shikiConfig: {
-      theme: "dracula",
-      wrap: true,
-    },
+    shikiConfig: { theme: "dracula", wrap: true },
   },
 });
